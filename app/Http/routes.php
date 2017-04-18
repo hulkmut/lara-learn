@@ -11,11 +11,14 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+/*Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('home', 'HomeController@index');*/
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+
+
+Route::resource('makers' , 'MakerController', ['except' => ['create' , 'edit']]);
+
+Route::resource('vehicles' , 'VehiclesController', ['only' => ['index' ]]);
+
+Route::resource('maker.vehicles' , 'MakerVehiclesController' , ['except' => [ 'edit', 'create' ]]);
